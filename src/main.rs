@@ -14,11 +14,15 @@ fn setup(
     ambient_light.color = Color::WHITE;
     ambient_light.brightness = 0.25;
 
-    let my_mesh = meshes.add(Mesh::from(shape::Torus::default()));
+    let my_mesh = meshes.add(Mesh::from(shape::Torus {
+        subdivisions_segments: 500,
+        subdivisions_sides: 100,
+        ..default()
+    }));
     let my_material = materials.add(Color::WHITE.into());
 
     commands.spawn(Camera3dBundle {
-        transform: Transform::from_xyz(0.0, 10.0, 2.0).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(0.0, 4.0, 0.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..default()
     });
 
